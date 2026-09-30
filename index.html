@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prakrithi Stone | Premium Natural Stone, Wall Cladding & Landscapes</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        stoneBg: '#fdfbf7',
+                        cardBg: '#f4ecd8',
+                        primaryBrown: '#5c4033',
+                        darkBrown: '#3e2723',
+                        accentBrown: '#8d6e63',
+                        lightSand: '#e7dfd1',
+                        warmCream: '#fffdf9'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom scroll reveal and magnetic button styles */
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .magnetic-btn {
+            transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(244, 236, 216, 0.82);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(141, 110, 99, 0.2);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fdfbf7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8d6e63;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body class="bg-stoneBg text-darkBrown font-sans antialiased selection:bg-accentBrown selection:text-white">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-stoneBg/90 backdrop-blur-md border-b border-lightSand transition-all duration-300 shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#home" class="flex items-center space-x-3 group">
+                <div class="w-11 h-11 rounded-full bg-primaryBrown flex items-center justify-center text-warmCream font-serif text-xl font-bold shadow-md group-hover:scale-105 transition-transform">
+                    PS
+                </div>
+                <div>
+                    <span class="font-serif text-2xl font-bold tracking-wide text-primaryBrown block">PRAKRITHI STONE</span>
+                    <span class="text-xs uppercase tracking-widest text-accentBrown font-semibold">Natural Stone & Cladding</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center space-x-7 font-medium text-sm">
+                <a href="#home" class="text-primaryBrown hover:text-accentBrown transition-colors">Home</a>
+                <a href="#collections" class="text-primaryBrown hover:text-accentBrown transition-colors">Collections</a>
+                <a href="#cladding" class="text-primaryBrown hover:text-accentBrown transition-colors">Wall Cladding</a>
+                <a href="#landscapes" class="text-primaryBrown hover:text-accentBrown transition-colors">Landscapes</a>
+                <a href="#about" class="text-primaryBrown hover:text-accentBrown transition-colors">About Us</a>
+                <a href="#gallery" class="text-primaryBrown hover:text-accentBrown transition-colors">Gallery</a>
+                <a href="#reviews" class="text-primaryBrown hover:text-accentBrown transition-colors">Reviews</a>
+                <a href="#faq" class="text-primaryBrown hover:text-accentBrown transition-colors">FAQ</a>
+            </nav>
+
+            <!-- Header Actions -->
+            <div class="hidden sm:flex items-center space-x-4">
+                <a href="tel:9061303566" class="flex items-center space-x-2 text-sm font-semibold text-primaryBrown hover:text-accentBrown">
+                    <i class="fa-solid fa-phone text-accentBrown"></i>
+                    <span>9061303566</span>
+                </a>
+                <a href="#contact" onclick="openQuoteModal()" class="bg-primaryBrown hover:bg-darkBrown text-warmCream px-5 py-2.5 rounded-full text-sm font-medium transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                    Get Quote
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menu-btn" class="lg:hidden text-primaryBrown text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-stoneBg border-b border-lightSand px-6 py-5 space-y-3 shadow-xl">
+            <a href="#home" class="block text-primaryBrown font-medium py-1 mobile-link">Home</a>
+            <a href="#collections" class="block text-primaryBrown font-medium py-1 mobile-link">Collections</a>
+            <a href="#cladding" class="block text-primaryBrown font-medium py-1 mobile-link">Wall Cladding</a>
+            <a href="#landscapes" class="block text-primaryBrown font-medium py-1 mobile-link">Landscapes</a>
+            <a href="#about" class="block text-primaryBrown font-medium py-1 mobile-link">About Us</a>
+            <a href="#gallery" class="block text-primaryBrown font-medium py-1 mobile-link">Gallery</a>
+            <a href="#reviews" class="block text-primaryBrown font-medium py-1 mobile-link">Reviews</a>
+            <a href="#faq" class="block text-primaryBrown font-medium py-1 mobile-link">FAQ</a>
+            <a href="#contact" class="block text-primaryBrown font-medium py-1 mobile-link">Contact</a>
+            <div class="pt-3 border-t border-lightSand flex flex-col space-y-3">
+                <a href="tel:9061303566" class="flex items-center space-x-2 text-sm font-semibold text-primaryBrown">
+                    <i class="fa-solid fa-phone text-accentBrown"></i>
+                    <span>9061303566</span>
+                </a>
+                <button onclick="openQuoteModal()" class="w-full bg-primaryBrown text-warmCream py-2.5 rounded-full text-sm font-medium text-center">
+                    Get Quote
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80" alt="Natural Stone Architecture" class="w-full h-full object-cover transform scale-105 animate-pulse duration-1000">
+            <div class="absolute inset-0 bg-gradient-to-r from-darkBrown/90 via-darkBrown/75 to-primaryBrown/50"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 text-center lg:text-left w-full">
+            <div class="max-w-3xl reveal">
+                <span class="inline-block bg-accentBrown/90 text-warmCream text-xs uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 font-semibold backdrop-blur-sm">
+                    Timeless Earth Treasures & Natural Architecture
+                </span>
+                <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold text-warmCream leading-tight mb-6">
+                    Exquisite <span class="text-lightSand italic">Natural Stones</span>, Cladding & Landscapes
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-200 mb-10 leading-relaxed font-light">
+                    Welcome to Prakrithi Stone. We bring nature’s purest masterpieces to your living spaces with premium wall cladding, rugged landscaping stones, and durable sandstones.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-5">
+                    <a href="#collections" class="w-full sm:w-auto bg-accentBrown hover:bg-primaryBrown text-warmCream font-semibold px-8 py-4 rounded-full transition-all shadow-lg hover:shadow-xl text-center transform hover:-translate-y-1">
+                        Explore Collections
+                    </a>
+                    <a href="https://wa.me/919061303566?text=Hello%20Prakrithi%20Stone,%20I%20would%20like%20to%20inquire%20about%20your%20natural%20stones." target="_blank" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-warmCream border border-white/30 backdrop-blur-md font-semibold px-8 py-4 rounded-full transition-all text-center flex items-center justify-center space-x-2">
+                        <i class="fa-brands fa-whatsapp text-green-400 text-lg"></i>
+                        <span>Chat on WhatsApp</span>
+                    </a>
+                </div>
+
+                <!-- Trust Stats -->
+                <div class="mt-14 grid grid-cols-3 gap-6 pt-8 border-t border-white/20 text-warmCream">
+                    <div>
+                        <p class="font-serif text-2xl sm:text-3xl font-bold text-lightSand">100%</p>
+                        <p class="text-xs sm:text-sm text-gray-300">Natural Quarried Stone</p>
+                    </div>
+                    <div>
+                        <p class="font-serif text-2xl sm:text-3xl font-bold text-lightSand">Expert</p>
+                        <p class="text-xs sm:text-sm text-gray-300">Cladding & Landscaping</p>
+                    </div>
+                    <div>
+                        <p class="font-serif text-2xl sm:text-3xl font-bold text-lightSand">Global</p>
+                        <p class="text-xs sm:text-sm text-gray-300">Standards & Supply</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section id="collections" class="py-24 bg-stoneBg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <span class="text-accentBrown text-xs uppercase tracking-widest font-bold block mb-2">Curated Earth Materials</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-primaryBrown mb-4">Our Stone Collections</h2>
+                <p class="text-gray-600">Browse through our exquisite range of natural sandstones, wall cladding textures, and landscape boulders.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12 reveal">
+                <button onclick="filterCollection('all')" class="filter-btn active-tab bg-primaryBrown text-warmCream px-6 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all shadow-md">All Stones</button>
+                <button onclick="filterCollection('cladding')" class="filter-btn bg-cardBg hover:bg-accentBrown hover:text-warmCream text-primaryBrown px-6 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all shadow-sm">Wall Cladding</button>
+                <button onclick="filterCollection('landscape')" class="filter-btn bg-cardBg hover:bg-accentBrown hover:text-warmCream text-primaryBrown px-6 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all shadow-sm">Landscapes</button>
+                <button onclick="filterCollection('sandstone')" class="filter-btn bg-cardBg hover:bg-accentBrown hover:text-warmCream text-primaryBrown px-6 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all shadow-sm">Sandstone</button>
+            </div>
+
+            <!-- Product Cards Grid -->
+            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Item 1 -->
+                <div class="product-item reveal" data-category="cladding">
+                    <div class="bg-cardBg rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-lightSand group">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=800&q=80" alt="Stacked Stone Cladding" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-primaryBrown text-warmCream text-xs font-semibold px-3 py-1 rounded-full">Wall Cladding</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif text-2xl font-bold text-primaryBrown mb-2">Rustic Stacked Cladding</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Hand-dressed natural stone ledgestone panels designed to give exterior facades and accent walls depth and warmth.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-lightSand">
+                                <span class="text-xs font-medium text-accentBrown uppercase tracking-wider">Exterior & Interior</span>
+                                <button onclick="openInquiry('Rustic Stacked Cladding')" class="bg-primaryBrown hover:bg-darkBrown text-warmCream px-4 py-2 rounded-xl text-xs font-semibold transition-colors">
+                                    Enquire Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="product-item reveal" data-category="landscape">
+                    <div class="bg-cardBg rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-lightSand group">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="Landscape Stepping Stones" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-primaryBrown text-warmCream text-xs font-semibold px-3 py-1 rounded-full">Landscapes</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif text-2xl font-bold text-primaryBrown mb-2">Garden Stepping Boulders</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Natural irregularly shaped stone pavers and boulders that blend seamlessly into lush green lawns and garden pathways.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-lightSand">
+                                <span class="text-xs font-medium text-accentBrown uppercase tracking-wider">Garden & Walkways</span>
+                                <button onclick="openInquiry('Garden Stepping Boulders')" class="bg-primaryBrown hover:bg-darkBrown text-warmCream px-4 py-2 rounded-xl text-xs font-semibold transition-colors">
+                                    Enquire Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="product-item reveal" data-category="sandstone">
+                    <div class="bg-cardBg rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-lightSand group">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Indian Sandstone" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-primaryBrown text-warmCream text-xs font-semibold px-3 py-1 rounded-full">Sandstone</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif text-2xl font-bold text-primaryBrown mb-2">Kandla Grey Sandstone</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Durable, slip-resistant natural sandstone tiles and slabs with uniform grey tones, ideal for contemporary patios and pool decks.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-lightSand">
+                                <span class="text-xs font-medium text-accentBrown uppercase tracking-wider">Paving & Slabs</span>
+                                <button onclick="openInquiry('Kandla Grey Sandstone')" class="bg-primaryBrown hover:bg-darkBrown text-warmCream px-4 py-2 rounded-xl text-xs font-semibold transition-colors">
+                                    Enquire Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="product-item reveal" data-category="cladding">
+                    <div class="bg-cardBg rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-lightSand group">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80" alt="Slate Cladding" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-primaryBrown text-warmCream text-xs font-semibold px-3 py-1 rounded-full">Wall Cladding</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif text-2xl font-bold text-primaryBrown mb-2">Slate Stone Cladding</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Multi-color natural slate tiles offering stunning metallic sheen variations and superior water resistance for feature walls.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-lightSand">
+                                <span class="text-xs font-medium text-accentBrown uppercase tracking-wider">Feature Walls</span>
+                                <button onclick="openInquiry('Slate Stone Cladding')" class="bg-primaryBrown hover:bg-darkBrown text-warmCream px-4 py-2 rounded-xl text-xs font-semibold transition-colors">
+                                    Enquire Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="product-item reveal" data-category="landscape">
+                    <div class="bg-cardBg rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-lightSand group">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Landscape Cobbles" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-primaryBrown text-warmCream text-xs font-semibold px-3 py-1 rounded-full">Landscapes</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif text-2xl font-bold text-primaryBrown mb-2">Granite Cobble Stones</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Heavy-duty tumbled granite cobbles designed for magnificent driveways, heritage courtyards, and perimeter borders.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-lightSand">
+                                <span class="text-xs font-medium text-accentBrown uppercase tracking-wider">Driveways & Edging</span>
+                                <button onclick="openInquiry('Granite Cobble Stones')" class="bg-primaryBrown hover:bg-darkBrown text-warmCream px-4 py-2 rounded-xl text-xs font-semibold transition-colors">
+                                    Enquire Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="product-item reveal" data-category="sandstone">
+                    <div class="bg-cardBg rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-lightSand group">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Teak Sandstone" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-primaryBrown text-warmCream text-xs font-semibold px-3 py-1 rounded-full">Sandstone</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif text-2xl font-bold text-primaryBrown mb-2">Natural Teak Sandstone</h3>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Stunning wood-grain textured Indian sandstone that brings organic warmth and unmatched elegance to outdoor pools and terraces.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-lightSand">
+                                <span class="text-xs font-medium text-accentBrown uppercase tracking-wider">Terrace & Poolside</span>
+                                <button onclick="openInquiry('Natural Teak Sandstone')" class="bg-primaryBrown hover:bg-darkBrown text-warmCream px-4 py-2 rounded-xl text-xs font-semibold transition-colors">
+                                    Enquire Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cladding & Landscape Spotlight Sections -->
+    <section id="cladding" class="py-20 bg-cardBg/50 border-y border-lightSand">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <span class="text-accentBrown text-xs uppercase tracking-widest font-bold block mb-2">Architectural Elevation</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-primaryBrown mb-4">Transform Walls into Art with Premium Cladding</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6 font-light">
+                        Our stone wall cladding materials add texture, depth, and timeless luxury to both exterior facades and interior living room feature walls. Engineered for durability against weathering while retaining raw organic beauty.
+                    </p>
+                    <ul class="space-y-3 mb-8 text-sm text-gray-700">
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-check text-accentBrown"></i><span>Weather & moisture resistant natural stone</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-check text-accentBrown"></i><span>Easy installation with precise interlocking panels</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-check text-accentBrown"></i><span>Available in Slate, Quartzite, and Sandstone</span></li>
+                    </ul>
+                    <a href="#contact" onclick="openInquiry('Wall Cladding Consultation')" class="inline-block bg-primaryBrown hover:bg-darkBrown text-warmCream font-semibold px-8 py-3.5 rounded-full transition-all shadow-md">
+                        Get Cladding Consultation
+                    </a>
+                </div>
+                <div class="grid grid-cols-2 gap-4 reveal">
+                    <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=600&q=80" alt="Cladding Wall 1" class="rounded-2xl shadow-md h-72 w-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Cladding Wall 2" class="rounded-2xl shadow-md h-72 w-full object-cover mt-8">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="landscapes" class="py-20 bg-stoneBg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1 grid grid-cols-2 gap-4 reveal">
+                    <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=600&q=80" alt="Landscape 1" class="rounded-2xl shadow-md h-72 w-full object-cover mt-8">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80" alt="Landscape 2" class="rounded-2xl shadow-md h-72 w-full object-cover">
+                </div>
+                <div class="order-1 lg:order-2 reveal">
+                    <span class="text-accentBrown text-xs uppercase tracking-widest font-bold block mb-2">Outdoor Masterpieces</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-primaryBrown mb-4">Landscape Stones & Boulders for Scenic Gardens</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6 font-light">
+                        Design breathtaking gardens, patios, and outdoor recreational spaces using Prakrithi Stone's landscaping stones. From natural stepping boulders and cobbles to garden borders, we provide rugged elegance for every landscape layout.
+                    </p>
+                    <ul class="space-y-3 mb-8 text-sm text-gray-700">
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-check text-accentBrown"></i><span>Natural anti-slip texture for safe walkways</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-check text-accentBrown"></i><span>Rugged boulders and decorative pebbles</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-check text-accentBrown"></i><span>Withstands heavy foot traffic and extreme climate</span></li>
+                    </ul>
+                    <a href="#contact" onclick="openInquiry('Landscape Stone Inquiry')" class="inline-block bg-primaryBrown hover:bg-darkBrown text-warmCream font-semibold px-8 py-3.5 rounded-full transition-all shadow-md">
+                        Explore Landscape Stones
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-cardBg/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center reveal">
+                <span class="text-accentBrown text-xs uppercase tracking-widest font-bold block mb-2">Our Legacy</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-primaryBrown mb-6">About Prakrithi Stone</h2>
+                <p class="text-gray-700 leading-relaxed mb-6 font-light text-base sm:text-lg">
+                    At <strong>Prakrithi Stone</strong>, we bridge the gap between timeless earth formations and modern architecture. Specializing in top-tier natural stones, exquisite wall cladding panels, and robust landscape paving materials, we serve homeowners, landscape architects, and commercial builders with unwavering commitment to quality.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6">
+                    <div class="bg-stoneBg p-6 rounded-2xl border border-lightSand shadow-sm">
+                        <i class="fa-solid fa-gem text-accentBrown text-2xl mb-3"></i>
+                        <h4 class="font-serif font-bold text-primaryBrown mb-1">Premium Quality</h4>
+                        <p class="text-xs text-gray-600">Handpicked natural mineral integrity.</p>
+                    </div>
+                    <div class="bg-stoneBg p-6 rounded-2xl border border-lightSand shadow-sm">
+                        <i class="fa-solid fa-compass-drafting text-accentBrown text-2xl mb-3"></i>
+                        <h4 class="font-serif font-bold text-primaryBrown mb-1">Custom Cuts</h4>
+                        <p class="text-xs text-gray-600">Tailored dimensions for your project.</p>
+                    </div>
+                    <div class="bg-stoneBg p-6 rounded-2xl border border-lightSand shadow-sm">
+                        <i class="fa-solid fa-handshake text-accentBrown text-2xl mb-3"></i>
+                        <h4 class="font-serif font-bold text-primaryBrown mb-1">Trusted Service</h4>
+                        <p class="text-xs text-gray-600">Dedicated guidance from experts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 bg-stoneBg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <span class="text-accentBrown text-xs uppercase tracking-widest font-bold block mb-2">Visual Showcase</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-primaryBrown mb-4">Stone Architecture Gallery</h2>
+                <p class="text-gray-600">Click on any image to view in full resolution.</p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="relative group overflow-hidden rounded-2xl shadow-md h-80 reveal cursor-pointer" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Sandstone Paving" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkBrown/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div>
+                            <span class="text-lightSand text-xs uppercase tracking-wider font-semibold">Sandstone Paving</span>
+                            <h4 class="text-warmCream font-serif text-xl font-bold">Luxury Villa Terrace</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group overflow-hidden rounded-2xl shadow-md h-80 reveal cursor-pointer" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=800&q=80" alt="Wall Cladding" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkBrown/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div>
+                            <span class="text-lightSand text-xs uppercase tracking-wider font-semibold">Wall Cladding</span>
+                            <h4 class="text-warmCream font-serif text-xl font-bold">Exterior Elevation Cladding</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group overflow-hidden rounded-2xl shadow-md h-80 reveal cursor-pointer" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Landscape Stone" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkBrown/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div>
+                            <span class="text-lightSand text-xs uppercase tracking-wider font-semibold">Landscapes</span>
+                            <h4 class="text-warmCream font-serif text-xl font-bold">Garden Pathway Flagstones</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group overflow-hidden rounded-2xl shadow-md h-80 reveal cursor-pointer" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Granite Cobbles" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkBrown/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div>
+                            <span class="text-lightSand text-xs uppercase tracking-wider font-semibold">Cobbles & Setts</span>
+                            <h4 class="text-warmCream font-serif text-xl font-bold">Driveway Cobblestone Paving</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group overflow-hidden rounded-2xl shadow-md h-80 reveal cursor-pointer" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=800&q=80" alt="Quarry Selection" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkBrown/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div>
+                            <span class="text-lightSand text-xs uppercase tracking-wider font-semibold">Natural Quarry</span>
+                        <h4 class="text-warmCream font-serif text-xl font-bold">Raw Stone Selection</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group overflow-hidden rounded-2xl shadow-md h-80 reveal cursor-pointer" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80" alt="Slate Feature Wall" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkBrown/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div>
+                            <span class="text-lightSand text-xs uppercase tracking-wider font-semibold">Interior Design</span>
+                            <h4 class="text-warmCream font-serif text-xl font-bold">Living Room Slate Wall</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-24 bg-cardBg/50 border-t border-lightSand">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <span class="text-accentBrown text-xs uppercase tracking-widest font-bold block mb-2">Testimonials</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-primaryBrown mb-4">Client Reviews & Praise</h2>
+                <p class="text-gray-600">See what architects and homeowners say about Prakrithi Stone products.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-stoneBg p-8 rounded-2xl border border-lightSand shadow-sm reveal flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-500 space-x-1 mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 italic text-sm mb-6 leading-relaxed">
+                            "Prakrithi Stone supplied the slate wall cladding for our commercial facade. The texture and color consistency are exceptional. Truly top-grade natural stone!"
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-4 pt-4 border-t border-lightSand">
+                        <div class="w-12 h-12 rounded-full bg-primaryBrown text-warmCream font-serif font-bold flex items-center justify-center text-lg">
+                            AR
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-primaryBrown text-sm">Ar. Anoop Raj</h4>
+                            <p class="text-xs text-gray-500">Principal Architect</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-stoneBg p-8 rounded-2xl border border-lightSand shadow-sm reveal flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-500 space-x-1 mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 italic text-sm mb-6 leading-relaxed">
+                            "We purchased landscape stepping boulders and Kandla Grey sandstone for our villa garden. The quality is magnificent and gives our outdoor space a resort vibe."
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-4 pt-4 border-t border-lightSand">
+                        <div class="w-12 h-12 rounded-full bg-primaryBrown text-warmCream font-serif font-bold flex items-center justify-center text-lg">
+                            MS
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-primaryBrown text-sm">Meera Sreedharan</h4>
+                            <p class="text-xs text-gray-500">Homeowner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-stoneBg p-8 rounded-2xl border border-lightSand shadow-sm reveal flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-500 space-x-1 mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 italic text-sm mb-6 leading-relaxed">
+                            "Fast delivery, robust crating, and gorgeous teak sandstone. Prakrithi Stone is our go-to supplier for all landscape and wall cladding projects now."
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-4 pt-4 border-t border-lightSand">
+                        <div class="w-12 h-12 rounded-full bg-primaryBrown text-warmCream font-serif font-bold flex items-center justify-center text-lg">
+                            JK
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-primaryBrown text-sm">Jithesh Kumar</h4>
+                            <p class="text-xs text-gray-500">Landscape Contractor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-stoneBg">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span class="text-accentBrown text-xs uppercase tracking-widest font-bold block mb-2">Got Questions?</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-primaryBrown mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-600">Find answers regarding our natural stones, wall cladding, landscape pavers, and maintenance.</p>
+            </div>
+
+            <div class="space-y-4 reveal">
+                <!-- FAQ 1 -->
+                <div class="bg-cardBg rounded-2xl border border-lightSand overflow-hidden shadow-sm">
+                    <button class="w-full px-6 py-5 text-left font-serif font-bold text-primaryBrown flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span>Are Prakrithi Stone products 100% natural stone?</span>
+                        <i class="fa-solid fa-chevron-down text-accentBrown transition-transform duration-300"></i>
+                    </button>
+                    <div class="px-6 pb-5 text-gray-600 text-sm leading-relaxed hidden">
+                        Yes, absolutely! All our stones are 100% natural, quarried directly from authentic mineral deposits. We do not manufacture artificial or synthetic composite stones, ensuring genuine texture and enduring beauty.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-cardBg rounded-2xl border border-lightSand overflow-hidden shadow-sm">
+                    <button class="w-full px-6 py-5 text-left font-serif font-bold text-primaryBrown flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span>Can wall cladding stones be used outdoors and in wet areas?</span>
+                        <i class="fa-solid fa-chevron-down text-accentBrown transition-transform duration-300"></i>
+                    </button>
+                    <div class="px-6 pb-5 text-gray-600 text-sm leading-relaxed hidden">
+                        Yes. Our wall cladding stones are highly weather-resistant and perform exceptionally well on exterior building facades, boundary walls, and water features. We recommend applying a suitable stone sealer for added protection against moisture.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-cardBg rounded-2xl border border-lightSand overflow-hidden shadow-sm">
+                    <button class="w-full px-6 py-5 text-left font-serif font-bold text-primaryBrown flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span>Do you provide custom dimensions for landscaping and paving?</span>
+                        <i class="fa-solid fa-chevron-down text-accentBrown transition-transform duration-300"></i>
+                    </button>
+                    <div class="px-6 pb-5 text-gray-600 text-sm leading-relaxed hidden">
+                        Yes, we offer custom cutting, sizing, and finishing (such as natural split, honed, flamed, or tumbled) according to your project blueprints and architectural requirements.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-cardBg rounded-2xl border border-lightSand overflow-hidden shadow-sm">
+                    <button class="w-full px-6 py-5 text-left font-serif font-bold text-primaryBrown flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span>How do I maintain natural stone surfaces?</span>
+                        <i class="fa-solid fa-chevron-down text-accentBrown transition-transform duration-300"></i>
+                    </button>
+                    <div class="px-6 pb-5 text-gray-600 text-sm leading-relaxed hidden">
+                        Natural stones require minimal upkeep. Periodic cleaning with mild water and neutral stone-safe detergent is sufficient. Applying a breathable impregnating sealer every few years preserves color and prevents staining.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Map Section -->
+    <section class="py-16 bg-cardBg/30 border-t border-lightSand">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+                <span class="text-accentBrown text-xs uppercase tracking-widest font-bold block mb-2">Our Location</span>
+                <h2 class="font-serif text-3xl font-bold text-primaryBrown mb-3">Visit Prakrithi Stone Showroom</h2>
+                <p class="text-gray-600 text-sm">Explore our physical stone displays and consult with our material experts.</p>
+            </div>
+            
+            <div class="rounded-3xl overflow-hidden shadow-lg border border-lightSand h-96 reveal relative bg-lightSand flex items-center justify-center">
+                <!-- Google Maps Embed -->
+                <iframe class="w-full h-full border-0 filter contrast-115" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.4884218318!2d76.299884!3d10.01586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080dcf1234567%3A0x89abcdef12345678!2sKerala%2C%20India!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+                <div class="absolute bottom-6 left-6 bg-stoneBg/95 backdrop-blur-md p-4 rounded-2xl shadow-md border border-lightSand max-w-xs hidden sm:block">
+                    <h4 class="font-serif font-bold text-primaryBrown text-sm mb-1">Prakrithi Stone HQ</h4>
+                    <p class="text-xs text-gray-600">Specialists in Natural Stone, Wall Cladding & Landscapes.</p>
+                    <p class="text-xs font-semibold text-accentBrown mt-2"><i class="fa-solid fa-phone mr-1"></i> 9061303566</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Contact Section -->
+    <footer id="contact" class="bg-darkBrown text-warmCream pt-20 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Col 1 -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-accentBrown flex items-center justify-center text-warmCream font-serif font-bold text-lg">
+                            PS
+                        </div>
+                        <span class="font-serif text-xl font-bold tracking-wide">PRAKRITHI STONE</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 font-light">
+                        Timeless earth treasures, natural wall cladding, and stunning landscape stones crafted for architectural excellence.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/" target="_blank" class="w-10 h-10 rounded-full bg-white/10 hover:bg-accentBrown flex items-center justify-center transition-colors" title="Instagram">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                        </a>
+                        <a href="https://wa.me/919061303566" target="_blank" class="w-10 h-10 rounded-full bg-white/10 hover:bg-green-600 flex items-center justify-center transition-colors" title="WhatsApp">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                        </a>
+                        <a href="tel:9061303566" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primaryBrown flex items-center justify-center transition-colors" title="Call">
+                            <i class="fa-solid fa-phone text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="font-serif text-lg font-bold mb-6 text-lightSand">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#home" class="hover:text-warmCream transition-colors">Home</a></li>
+                        <li><a href="#collections" class="hover:text-warmCream transition-colors">Collections</a></li>
+                        <li><a href="#cladding" class="hover:text-warmCream transition-colors">Wall Cladding</a></li>
+                        <li><a href="#landscapes" class="hover:text-warmCream transition-colors">Landscapes</a></li>
+                        <li><a href="#about" class="hover:text-warmCream transition-colors">About Us</a></li>
+                        <li><a href="#reviews" class="hover:text-warmCream transition-colors">Reviews</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="font-serif text-lg font-bold mb-6 text-lightSand">Stone Categories</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><span class="hover:text-warmCream cursor-pointer" onclick="openInquiry('Stacked Cladding')">Stacked Stone Cladding</span></li>
+                        <li><span class="hover:text-warmCream cursor-pointer" onclick="openInquiry('Garden Stepping Boulders')">Garden Boulders & Steppers</span></li>
+                        <li><span class="hover:text-warmCream cursor-pointer" onclick="openInquiry('Kandla Grey Sandstone')">Kandla Grey Sandstone</span></li>
+                        <li><span class="hover:text-warmCream cursor-pointer" onclick="openInquiry('Slate Stone Cladding')">Slate Stone Cladding</span></li>
+                        <li><span class="hover:text-warmCream cursor-pointer" onclick="openInquiry('Granite Cobbles')">Granite Cobblestones</span></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="font-serif text-lg font-bold mb-6 text-lightSand">Contact & Social</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-phone text-accentBrown mt-1"></i>
+                            <a href="tel:9061303566" class="hover:text-warmCream font-medium text-warmCream">9061303566</a>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-envelope text-accentBrown mt-1"></i>
+                            <span>info@prakrithistone.com</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-brands fa-instagram text-accentBrown mt-1"></i>
+                            <a href="https://www.instagram.com/" target="_blank" class="hover:text-warmCream font-medium text-warmCream">@prakrithistones</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400">
+                <p>&copy; 2026 Prakrithi Stone. All rights reserved. Natural Stone, Wall Cladding & Landscapes.</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="hover:text-gray-300">Privacy Policy</a>
+                    <a href="#" class="hover:text-gray-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Magnetic Call & WhatsApp Action Buttons -->
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col space-y-3">
+        <!-- Call Button -->
+        <a href="tel:9061303566" class="magnetic-btn w-14 h-14 rounded-full bg-primaryBrown text-warmCream flex items-center justify-center shadow-2xl hover:bg-darkBrown transition-all duration-300 transform hover:scale-110 group relative" title="Call Us: 9061303566">
+            <i class="fa-solid fa-phone text-xl"></i>
+            <span class="absolute right-16 bg-darkBrown text-warmCream text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-md pointer-events-none">
+                Call: 9061303566
+            </span>
+        </a>
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/919061303566?text=Hello%20Prakrithi%20Stone,%20I%20would%20like%20to%20inquire%20about%20your%20natural%20stones." target="_blank" class="magnetic-btn w-14 h-14 rounded-full bg-green-600 text-warmCream flex items-center justify-center shadow-2xl hover:bg-green-500 transition-all duration-300 transform hover:scale-110 group relative" title="WhatsApp Us">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+            <span class="absolute right-16 bg-darkBrown text-warmCream text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-md pointer-events-none">
+                WhatsApp Us
+            </span>
+        </a>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-warmCream text-3xl hover:text-accentBrown">&times;</button>
+        <img id="lightbox-img" src="" alt="Enlarged View" class="max-w-full max-h-[85vh] rounded-2xl shadow-2xl object-contain">
+    </div>
+
+    <!-- Quote / Inquiry Modal -->
+    <div id="quote-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-stoneBg rounded-3xl p-8 max-w-md w-full shadow-2xl border border-lightSand relative reveal active">
+            <button onclick="closeQuoteModal()" class="absolute top-5 right-5 text-gray-500 hover:text-primaryBrown text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="font-serif text-2xl font-bold text-primaryBrown mb-2">Request Stone Quote</h3>
+            <p class="text-xs text-gray-600 mb-6">Fill in your requirements below to connect instantly with Prakrithi Stone via WhatsApp.</p>
+            
+            <form id="inquiry-form" onsubmit="submitInquiry(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-primaryBrown uppercase mb-1">Your Name</label>
+                    <input type="text" id="inq-name" required class="w-full bg-cardBg border border-lightSand rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-accentBrown">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-primaryBrown uppercase mb-1">Phone Number</label>
+                    <input type="tel" id="inq-phone" required class="w-full bg-cardBg border border-lightSand rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-accentBrown" value="9061303566">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-primaryBrown uppercase mb-1">Stone Product / Requirement</label>
+                    <input type="text" id="inq-product" required class="w-full bg-cardBg border border-lightSand rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-accentBrown" value="Natural Wall Cladding">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-primaryBrown uppercase mb-1">Message / Quantity (Sq.Ft)</label>
+                    <textarea id="inq-msg" rows="3" class="w-full bg-cardBg border border-lightSand rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-accentBrown" placeholder="Mention project location or approx square footage..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-primaryBrown hover:bg-darkBrown text-warmCream font-semibold py-3.5 rounded-xl transition-all shadow-md">
+                    Send Inquiry via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript for Interactivity, Filters, Animations & Modals -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Scroll Reveal Intersection Observer
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.12 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Collection Filter Tabs
+        function filterCollection(category) {
+            // Update active button state
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-primaryBrown', 'text-warmCream');
+                btn.classList.add('bg-cardBg', 'text-primaryBrown');
+            });
+            event.target.classList.remove('bg-cardBg', 'text-primaryBrown');
+            event.target.classList.add('bg-primaryBrown', 'text-warmCream');
+
+            // Filter items
+            const items = document.querySelectorAll('.product-item');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // FAQ Accordion Toggle
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // Lightbox Modal Functions
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = img.src;
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+        }
+
+        // Quote Modal Functions
+        function openQuoteModal() {
+            const modal = document.getElementById('quote-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function openInquiry(productName) {
+            document.getElementById('inq-product').value = productName;
+            openQuoteModal();
+        }
+
+        function closeQuoteModal() {
+            const modal = document.getElementById('quote-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function submitInquiry(event) {
+            event.preventDefault();
+            const name = document.getElementById('inq-name').value;
+            const phone = document.getElementById('inq-phone').value;
+            const product = document.getElementById('inq-product').value;
+            const msg = document.getElementById('inq-msg').value;
+
+            const whatsappUrl = `https://wa.me/919061303566?text=${encodeURIComponent(`Hello Prakrithi Stone,\n\nName: ${name}\nPhone: ${phone}\nProduct: ${product}\nDetails: ${msg}`)}`;
+            window.open(whatsappUrl, '_blank');
+            closeQuoteModal();
+        }
+
+        // Magnetic Hover Physics for Floating Buttons
+        document.querySelectorAll('.magnetic-btn').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) scale(1.1)';`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0px, 0px) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
